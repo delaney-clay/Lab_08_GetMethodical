@@ -179,4 +179,43 @@ public class SafeInput
 
         return retString;
     }
+    public static void prettyHeader(String msg)
+    {
+        int width = 60;
+        int rowTwoEdges = 3;
+        int msgSpace = width - (rowTwoEdges * 2);
+        if (msg.length() > msgSpace) {
+            msg = msg.substring(0, msgSpace);
+        }
+        // Top row
+        for (int row = 1; row < width; row++) {
+            System.out.print("*");
+        }
+        System.out.println();
+
+        System.out.print("***");
+
+        int msgLength = msg.length();
+        int totalSpacesNeeded = msgSpace - msgLength;
+
+        int leftSpaces = totalSpacesNeeded / 2;
+        int rightSpaces = totalSpacesNeeded - leftSpaces; // Handles odd message lengths perfectly
+
+        for (int row = 0; row < leftSpaces; row++) {
+            System.out.print(" ");
+        }
+        System.out.print(msg);
+
+        for (int row = 0; row < rightSpaces; row++) {
+            System.out.print(" ");
+        }
+
+        System.out.println("***");
+
+        for (int row = 0; row < width; row++) {
+            System.out.print("*");
+        }
+        System.out.println();
+
+    }
 }
