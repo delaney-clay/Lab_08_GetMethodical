@@ -19,7 +19,8 @@ public class SafeInput
         boolean done = false;
         String trash = "";
 
-        do {
+        do
+        {
             System.out.print("\n" + prompt + ": ");
             if (pipe.hasNextInt())
             {
@@ -36,5 +37,96 @@ public class SafeInput
         } while (!done);
 
         return retInt;
+    }
+    public static double getDouble(Scanner pipe, String Prompt)
+    {
+        double retDouble = 0;
+        boolean done = false;
+        String trash = "";
+
+        do
+        {
+            System.out.println("\n" + Prompt + ": ");
+            if (pipe.hasNextDouble())
+            {
+                retDouble = pipe.nextDouble();
+                done = true;
+            }
+            else
+            {
+                trash = pipe.next();
+                System.out.println("You entered: " + trash + ". Please enter a valid double.");
+                done = false;
+            }
+            pipe.nextLine();
+        } while (!done);
+
+        return retDouble;
+    }
+    public static int getRangedInt(Scanner pipe, String prompt, int low, int high)
+    {
+        int retInt = 0;
+        boolean done = false;
+        String trash = "";
+
+        do
+        {
+            System.out.print("\n" + prompt + " [" + low + " - " + high + "]: ");
+            if (pipe.hasNextInt())
+            {
+                retInt = pipe.nextInt();
+                if (retInt >= low && retInt <= high)
+                {
+                    done = true;
+                }
+                else
+                {
+                    System.out.println("You entered: " + retInt + ". Please enter a number between " + low + " and " + high + ".");
+                    done = false;
+                }
+            }
+            else
+            {
+                trash = pipe.next();
+                System.out.println("You entered: " + trash + ". Please enter a valid integer.");
+                done = false;
+            }
+            pipe.nextLine();
+        } while (!done);
+
+        return retInt;
+    }
+    public static double getRangedDouble(Scanner pipe, String prompt, double low, double high)
+    {
+        double retDouble = 0;
+        boolean done = false;
+        String trash = "";
+
+        do
+        {
+            System.out.println("\n" + prompt + " [" + low + " - " + high + "]: ");
+            if (pipe.hasNextDouble())
+            {
+                retDouble = pipe.nextDouble();
+                if (retDouble >= low && retDouble <= high)
+                {
+                    done = true;
+                }
+                else
+                {
+                    System.out.println("You entered: " + retDouble + ". Please enter a number between " + low + " and " + high + ".");
+                    done = false;
+                }
+            }
+            else
+            {
+                trash = pipe.next();
+                System.out.println("You entered: " + trash + ". Please enter a valid number.");
+                done = false;
+            }
+            pipe.nextLine();
+        } while (!done);
+
+        return retDouble;
     }
 }
