@@ -129,4 +129,54 @@ public class SafeInput
 
         return retDouble;
     }
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        boolean retBoolean = false;
+        boolean done = false;
+        String response = "";
+
+        do
+        {
+            System.out.println("\n" + prompt + " [Y/N]: ");
+            response = pipe.nextLine();
+            if (response.equalsIgnoreCase("Y"))
+            {
+                retBoolean = true;
+                done = true;
+            }
+            else if (response.equalsIgnoreCase("N"))
+            {
+                retBoolean = false;
+                done = true;
+            }
+            else
+            {
+                System.out.println("You entered: " + response + ". Please enter Y or N.");
+            }
+        } while (!done);
+
+        return retBoolean;
+    }
+    public static String getRegExString(Scanner pipe, String prompt, String regEx)
+    {
+        String retString = "";
+        boolean done = false;
+
+        do
+        {
+            System.out.println("\n" + prompt + ": ");
+            retString = pipe.nextLine();
+            if (retString.matches(regEx))
+            {
+                done = true;
+            }
+            else
+            {
+                System.out.println("You entered " + retString + ". Try again.");
+                done = false;
+            }
+        } while (!done);
+
+        return retString;
+    }
 }

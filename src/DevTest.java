@@ -10,6 +10,8 @@ public class DevTest
         double price = 0.0;
         int num = 0;
         double length = 0.0;
+        boolean legalAge = false;
+        String birthday = "\\d\\d/\\d\\d/\\d\\d\\d\\d";
 
         Name = SafeInput.getNonZeroLenString(in, "Enter your name");
         System.out.println("Your name is " + Name + ".");
@@ -25,5 +27,11 @@ public class DevTest
 
         length = SafeInput.getRangedDouble(in, "Enter the length of a room", 10, 50);
         System.out.println("The length of the room is " + length + ".");
+
+        legalAge = SafeInput.getYNConfirm(in, "Are you of legal age?");
+        System.out.println("It is " + legalAge + " that you are of legal age.");
+
+        birthday = SafeInput.getRegExString(in, "Enter your birthday in the format mm/dd/yyyy", birthday);
+        System.out.println("Your birthday is " + birthday + ".");
     }
 }
